@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Efficient Team Technical Services LLC — Dubai</title>
+  <meta name="description" content="Dubai's trusted technical services team. AC solutions, electrical, plumbing, interior refinishing and gypsum works." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Outfit:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ===== HOME-SPECIFIC STYLES ===== */
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      padding: var(--nav-height) 20px 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+      filter: blur(3px);
+      transform: scale(1.06);
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.62);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease 0.1s forwards;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4.8rem);
+      color: var(--white);
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease 0.25s forwards;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 40px;
+      letter-spacing: 0.04em;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease 0.4s forwards;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease 0.55s forwards;
+    }
+
+    .scroll-arrow {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      color: rgba(255,255,255,0.5);
+      animation: bounce 1.8s infinite;
+      cursor: pointer;
+    }
+
+    .scroll-arrow svg {
+      display: block;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Stats Strip */
+    .stats-strip {
+      background: var(--charcoal);
+      padding: 52px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 20px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--red);
+      line-height: 1;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 8px;
+      display: block;
+    }
+
+    /* Services Preview */
+    .services-preview {
+      padding: var(--section-pad) 0;
+      background: var(--white);
+    }
+
+    .services-preview .heading-wrap {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 36px 32px;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      margin-bottom: 20px;
+      color: var(--red);
+    }
+
+    .service-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .service-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.65;
+    }
+
+    .link-red {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--red);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.2s ease;
+    }
+
+    .link-red:hover { gap: 8px; }
+
+    /* Why Choose Us */
+    .why-us {
+      background: var(--surface);
+      padding: var(--section-pad) 0;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .why-left h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .why-left h2 span { color: var(--red); }
+
+    .why-left p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    .why-features {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .why-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .why-feature-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(192,57,43,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--red);
+    }
+
+    .why-feature h4 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .why-feature p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* Gallery Strip */
+    .gallery-strip {
+      overflow: hidden;
+    }
+
+    .gallery-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      height: 300px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(192,57,43,0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    .gallery-overlay svg {
+      color: var(--white);
+      width: 32px;
+      height: 32px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(3), .stat-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.08); }
+    }
+
+    @media (max-width: 768px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; gap: 40px; }
+      .gallery-row { grid-template-columns: repeat(2, 1fr); height: auto; }
+      .gallery-item { height: 200px; }
+      .gallery-row .gallery-item:last-child { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="Efficient Team Technical Services Logo" class="nav-logo-icon" />
+        <div class="nav-logo-text">
+          <span class="name">Efficient Team Technical Services</span>
+          <span class="arabic">ايفيشنت تيم للخدمات الفنية</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-right">
+        <a href="contact.html" class="btn btn-red">Book a Service</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&#x2715;</button>
+    <a href="index.html" class="nav-link active">Home</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="contact.html" class="btn btn-red">Book a Service</a>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Dubai's #1 Technical Services</p>
+      <h1>Dubai's Trusted Technical<br>Services Team</h1>
+      <p class="hero-sub">AC Solutions &bull; Electrical &bull; Plumbing &bull; Interiors &bull; Gypsum Works</p>
+      <div class="hero-btns">
+        <a href="contact.html" class="btn btn-red">Book a Service</a>
+        <a href="tel:+971507854262" class="btn btn-outline-white">Call Now</a>
+      </div>
+    </div>
+    <div class="scroll-arrow" onclick="document.getElementById('stats').scrollIntoView({behavior:'smooth'})">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ============ STATS STRIP ============ -->
+  <section class="stats-strip" id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <span class="stat-number" data-target="500">0</span>
+          <span class="stat-label">Projects Completed</span>
+        </div>
+        <div class="stat-item reveal" style="transition-delay:0.1s">
+          <span class="stat-number" data-target="4">0</span>
+          <span class="stat-label">Service Categories</span>
+        </div>
+        <div class="stat-item reveal" style="transition-delay:0.2s">
+          <span class="stat-number" data-target="3">0</span>
+          <span class="stat-label">Contact Numbers</span>
+        </div>
+        <div class="stat-item reveal" style="transition-delay:0.3s">
+          <span class="stat-number" data-target="100">0</span>
+          <span class="stat-label">% Reliable Service</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES PREVIEW ============ -->
+  <section class="services-preview section">
+    <div class="container">
+      <div class="heading-wrap">
+        <h2 class="section-title reveal">What We <span class="accent">Do</span></h2>
+        <span class="red-line reveal"></span>
+      </div>
+      <div class="services-grid">
+        <!-- Card 1 -->
+        <div class="service-card reveal" style="transition-delay:0s">
+          <svg class="service-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="8" y="16" width="36" height="24" rx="3"/>
+            <path d="M18 28h16M26 16V8M20 8h12"/>
+            <circle cx="26" cy="28" r="3"/>
+            <path d="M12 44h28"/>
+          </svg>
+          <h3>AC &amp; Cooling Solutions</h3>
+          <p>Expert installation, servicing, and repair of split units and central AC systems for homes and businesses across Dubai.</p>
+          <a href="services.html#ac" class="link-red">Learn More →</a>
+        </div>
+        <!-- Card 2 -->
+        <div class="service-card reveal" style="transition-delay:0.1s">
+          <svg class="service-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M26 8v4M26 40v4M8 26h4M40 26h4"/>
+            <circle cx="26" cy="26" r="10"/>
+            <path d="M19 19l2.5 2.5M30.5 30.5L33 33M19 33l2.5-2.5M30.5 21.5L33 19"/>
+            <path d="M14 38h24" stroke-width="2"/>
+          </svg>
+          <h3>Electrical &amp; Plumbing Works</h3>
+          <p>Complete electrical maintenance, lighting installation, circuit repair alongside full plumbing services including leak detection and pipe replacement.</p>
+          <a href="services.html#electrical" class="link-red">Learn More →</a>
+        </div>
+        <!-- Card 3 -->
+        <div class="service-card reveal" style="transition-delay:0.2s">
+          <svg class="service-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="6" y="6" width="40" height="40" rx="2"/>
+            <path d="M6 18h40M18 18v28"/>
+            <path d="M24 30l6-6 6 6"/>
+            <path d="M26 30v10"/>
+          </svg>
+          <h3>Interior &amp; Refinishing</h3>
+          <p>Premium painting, decorating, custom carpentry, cabinetry, doors and frames — transforming your spaces with quality craftsmanship.</p>
+          <a href="services.html#interior" class="link-red">Learn More →</a>
+        </div>
+        <!-- Card 4 -->
+        <div class="service-card reveal" style="transition-delay:0.3s">
+          <svg class="service-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 20h40v6H6z"/>
+            <path d="M12 26v14M26 26v14M40 26v14"/>
+            <path d="M9 14h34l3 6H6l3-6z"/>
+            <path d="M6 40h40"/>
+          </svg>
+          <h3>Gypsum Ceilings &amp; Partitions</h3>
+          <p>All types of gypsum works — decorative ceilings, partitions, wall finishes and ornamental designs crafted with precision.</p>
+          <a href="services.html#gypsum" class="link-red">Learn More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY CHOOSE US ============ -->
+  <section class="why-us">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-left reveal-left">
+          <h2>Efficient.<br><span>Reliable.</span><br>Excellent.</h2>
+          <p>We are a Dubai-based technical services company committed to delivering outstanding quality in every job we take on. Our team of skilled, certified technicians serves residential and commercial clients across the UAE — with speed, transparency, and professionalism at the core of everything we do.</p>
+        </div>
+        <div class="why-features reveal-right">
+          <div class="why-feature">
+            <div class="why-feature-icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Fast Response Time</h4>
+              <p>We show up when you need us — same-day and scheduled bookings available 6 days a week.</p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Certified Skilled Technicians</h4>
+              <p>Our technicians are trained, experienced professionals who take pride in quality workmanship.</p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Affordable &amp; Transparent Pricing</h4>
+              <p>No hidden fees. We give you a clear quote before work begins — always fair, always honest.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY STRIP ============ -->
+  <section class="gallery-strip">
+    <div class="gallery-row">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=500&q=80" alt="AC service" loading="lazy" />
+        <div class="gallery-overlay">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80" alt="Electrical work" loading="lazy" />
+        <div class="gallery-overlay">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=500&q=80" alt="Interior painting" loading="lazy" />
+        <div class="gallery-overlay">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&q=80" alt="Gypsum ceiling" loading="lazy" />
+        <div class="gallery-overlay">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=500&q=80" alt="Plumbing work" loading="lazy" />
+        <div class="gallery-overlay">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA BANNER ============ -->
+  <section class="cta-banner">
+    <div class="container reveal">
+      <h2>Ready to Book a Service?</h2>
+      <p>Our team is standing by 6 days a week. Get expert technical help delivered to your door.</p>
+      <a href="contact.html" class="btn btn-outline-white">Contact Us Today</a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="logo.png" alt="Efficient Team Technical Services Logo" width="36" height="36" style="object-fit:contain;" />
+            <span class="name">Efficient Team Technical Services</span>
+          </div>
+          <p style="font-size:0.78rem;color:rgba(255,255,255,0.4);margin-top:4px;">ايفيشنت تيم للخدمات الفنية ش.ذ.م.م</p>
+          <p class="footer-tagline">"Efficient, Reliable, Excellent."</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.16 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.11 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            050-7854262
+          </div>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.16 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.11 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            052-3256366
+          </div>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.16 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.11 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            055-9867271
+          </div>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            efficientteamtechnical@gmail.com
+          </div>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Khawaneej 2, Alttay, Dubai, UAE
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        &copy; 2025 Efficient Team Technical Services LLC. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileNavClose = document.getElementById('mobileNavClose');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+      document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+    });
+
+    mobileNavClose.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+
+    // Intersection Observer — reveal animations
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // Counter animation
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target, 10);
+      const suffix = el.dataset.suffix || (target === 100 ? '' : '+');
+      const duration = 1800;
+      const step = target / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        el.textContent = Math.floor(current) + (target >= 100 && el.parentElement.querySelector('.stat-label').textContent.includes('%') ? '%' : '+');
+      }, 16);
+    }
+
+    const counters = document.querySelectorAll('.stat-number[data-target]');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(c => counterObserver.observe(c));
+  </script>
+</body>
+</html>

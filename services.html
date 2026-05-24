@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Efficient Team Technical Services LLC</title>
+  <meta name="description" content="AC solutions, electrical & plumbing, interior refinishing and gypsum works in Dubai. Professional technical services for homes and businesses." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Outfit:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ===== SERVICES-SPECIFIC STYLES ===== */
+
+    /* Page Hero with BG image */
+    .page-hero-img {
+      position: relative;
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: var(--nav-height);
+      overflow: hidden;
+    }
+
+    .page-hero-img-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .page-hero-img-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+    }
+
+    .page-hero-img .page-hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-hero-img h1 {
+      color: var(--white);
+    }
+
+    .page-hero-img .breadcrumb,
+    .page-hero-img .breadcrumb a {
+      color: rgba(255,255,255,0.55);
+    }
+
+    .page-hero-img .breadcrumb .current {
+      color: var(--white);
+    }
+
+    /* Services Intro */
+    .services-intro {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      padding: 60px 20px 40px;
+    }
+
+    /* Service Block */
+    .service-block {
+      padding: var(--section-pad) 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .service-block:last-of-type { border-bottom: none; }
+
+    .service-block:nth-child(even) { background: var(--surface); }
+
+    .service-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .service-inner.reversed .svc-img { order: 2; }
+    .service-inner.reversed .svc-content { order: 1; }
+
+    .svc-img {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .svc-img img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .svc-img:hover img { transform: scale(1.03); }
+
+    .svc-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(192,57,43,0.1);
+      color: var(--red);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+
+    .svc-content h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .svc-content .desc {
+      font-size: 0.97rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .svc-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .svc-bullet {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    .svc-bullet::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    .svc-quote {
+      font-style: italic;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      border-left: 3px solid var(--red);
+      padding-left: 16px;
+      margin-top: 16px;
+    }
+
+    /* Bottom CTA Band */
+    .services-cta-band {
+      background: var(--red);
+      padding: clamp(40px, 6vw, 64px) 0;
+    }
+
+    .services-cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 28px;
+    }
+
+    .services-cta-inner p {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      color: var(--white);
+      max-width: 500px;
+    }
+
+    .services-cta-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 14px;
+    }
+
+    .cta-phone {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 768px) {
+      .service-inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .service-inner.reversed .svc-img { order: 0; }
+      .service-inner.reversed .svc-content { order: 0; }
+
+      .svc-img img { height: 260px; }
+
+      .services-cta-inner { flex-direction: column; align-items: flex-start; }
+      .services-cta-right { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="Efficient Team Technical Services Logo" class="nav-logo-icon" />
+        <div class="nav-logo-text">
+          <span class="name">Efficient Team Technical Services</span>
+          <span class="arabic">ايفيشنت تيم للخدمات الفنية</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link active">Services</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-right">
+        <a href="contact.html" class="btn btn-red">Book a Service</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&#x2715;</button>
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="services.html" class="nav-link active">Services</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="contact.html" class="btn btn-red">Book a Service</a>
+  </div>
+
+  <!-- ============ PAGE HERO ============ -->
+  <section class="page-hero-img">
+    <div class="page-hero-img-bg"></div>
+    <div class="page-hero-content reveal">
+      <h1>Our Services</h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="sep">›</span>
+        <span class="current">Services</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ============ INTRO ============ -->
+  <div class="services-intro reveal">
+    We provide a complete range of technical services for homes and businesses across Dubai — from AC cooling solutions to full interior refinishing. Every service is delivered by skilled, certified technicians committed to quality and reliability.
+  </div>
+
+  <!-- ============ SERVICE 1 — AC ============ -->
+  <section class="service-block" id="ac">
+    <div class="container">
+      <div class="service-inner">
+        <div class="svc-img reveal-left">
+          <img
+            src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80"
+            alt="AC technician servicing a unit"
+            loading="lazy"
+          />
+        </div>
+        <div class="svc-content reveal-right">
+          <span class="svc-tag">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+            AC &amp; Cooling
+          </span>
+          <h2>AC &amp; Cooling Solutions</h2>
+          <p class="desc">Expert AC solutions for cool, year-round comfort. Whether you need a new installation, a routine service, or an emergency repair, our trained technicians handle all makes and models with care and precision.</p>
+          <ul class="svc-bullets">
+            <li class="svc-bullet">Expert AC installation &amp; servicing</li>
+            <li class="svc-bullet">AC repair &amp; maintenance</li>
+            <li class="svc-bullet">Duct cleaning &amp; coil servicing</li>
+            <li class="svc-bullet">Split unit &amp; central AC solutions</li>
+          </ul>
+          <p class="svc-quote">"Expert AC solutions for cool, year-round comfort."</p>
+          <a href="contact.html" class="btn btn-red" style="margin-top:24px">Book AC Service</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICE 2 — ELECTRICAL & PLUMBING ============ -->
+  <section class="service-block" id="electrical">
+    <div class="container">
+      <div class="service-inner reversed">
+        <div class="svc-content reveal-left">
+          <span class="svc-tag">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Electrical &amp; Plumbing
+          </span>
+          <h2>Electrical &amp; Plumbing Works</h2>
+          <p class="desc">From full electrical maintenance and lighting installations to comprehensive plumbing services — we handle it all with safety, precision, and professionalism every time.</p>
+          <ul class="svc-bullets">
+            <li class="svc-bullet">All electrical maintenance</li>
+            <li class="svc-bullet">Circuit board repair</li>
+            <li class="svc-bullet">Lighting installation</li>
+            <li class="svc-bullet">Comprehensive plumbing services</li>
+            <li class="svc-bullet">Leak detection</li>
+            <li class="svc-bullet">Pipe replacement</li>
+          </ul>
+          <a href="contact.html" class="btn btn-red" style="margin-top:24px">Book This Service</a>
+        </div>
+        <div class="svc-img reveal-right">
+          <img
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+            alt="Electrical work in progress"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICE 3 — INTERIOR ============ -->
+  <section class="service-block" id="interior">
+    <div class="container">
+      <div class="service-inner">
+        <div class="svc-img reveal-left">
+          <img
+            src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=800&q=80"
+            alt="Interior painting and refinishing"
+            loading="lazy"
+          />
+        </div>
+        <div class="svc-content reveal-right">
+          <span class="svc-tag">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+            Interior &amp; Refinishing
+          </span>
+          <h2>Interior &amp; Refinishing</h2>
+          <p class="desc">Transforming your spaces with quality craftsmanship. Our interior team handles everything from premium painting and decorating to bespoke carpentry and millwork — delivering spaces you'll love.</p>
+          <ul class="svc-bullets">
+            <li class="svc-bullet">Painting &amp; decorating</li>
+            <li class="svc-bullet">Custom carpentry</li>
+            <li class="svc-bullet">Cabinetry, doors &amp; frames</li>
+            <li class="svc-bullet">All types of gypsum works</li>
+          </ul>
+          <p class="svc-quote">"Transforming your spaces with quality."</p>
+          <a href="contact.html" class="btn btn-red" style="margin-top:24px">Book This Service</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICE 4 — GYPSUM ============ -->
+  <section class="service-block" id="gypsum">
+    <div class="container">
+      <div class="service-inner reversed">
+        <div class="svc-content reveal-left">
+          <span class="svc-tag">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            Gypsum Works
+          </span>
+          <h2>Gypsum Ceilings &amp; Partitions</h2>
+          <p class="desc">Precision gypsum work that elevates any interior. From decorative false ceilings to functional partition walls — our craftsmen deliver clean, durable finishes that stand the test of time.</p>
+          <ul class="svc-bullets">
+            <li class="svc-bullet">All types of gypsum works</li>
+            <li class="svc-bullet">Gypsum ceilings &amp; partitions</li>
+            <li class="svc-bullet">Wall decorations &amp; finishing</li>
+          </ul>
+          <a href="contact.html" class="btn btn-red" style="margin-top:24px">Book This Service</a>
+        </div>
+        <div class="svc-img reveal-right">
+          <img
+            src="https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=800&q=80"
+            alt="Gypsum ceiling installation"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BOTTOM CTA BAND ============ -->
+  <section class="services-cta-band">
+    <div class="container">
+      <div class="services-cta-inner reveal">
+        <p>Not sure what service you need? Call us and we'll help.</p>
+        <div class="services-cta-right">
+          <span class="cta-phone">050-785-4262</span>
+          <a href="contact.html" class="btn btn-outline-white">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="logo.png" alt="Efficient Team Technical Services Logo" width="36" height="36" style="object-fit:contain;" />
+            <span class="name">Efficient Team Technical Services</span>
+          </div>
+          <p style="font-size:0.78rem;color:rgba(255,255,255,0.4);margin-top:4px;">ايفيشنت تيم للخدمات الفنية ش.ذ.م.م</p>
+          <p class="footer-tagline">"Efficient, Reliable, Excellent."</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.16 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.11 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            050-7854262 | 052-3256366 | 055-9867271
+          </div>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            efficientteamtechnical@gmail.com
+          </div>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Khawaneej 2, Alttay, Dubai, UAE
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        &copy; 2025 Efficient Team Technical Services LLC. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileNavClose = document.getElementById('mobileNavClose');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+      document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+    });
+
+    mobileNavClose.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => revealObserver.observe(el));
+  </script>
+</body>
+</html>
